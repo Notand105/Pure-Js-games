@@ -2,6 +2,7 @@ import { animationState } from "./spriteAnimation.js"
 
 let animation = 'idle'
 
+//obtenemos el valor de el elemento select 
 const dropdown = document.getElementById('animations')
 dropdown.addEventListener('change', (e) => {
   animation = e.target.value
@@ -21,6 +22,7 @@ let gameFrame = 0
 const staggerFrames = 5
 const spriteAnimation = []  
 
+// llenamos el spriteAnimation con las coordenadas para cada animacion, ejemplo [{x:0, y:0}, {x:530, y:56}]
 animationState.forEach((state, index) => {
   let frames = {
     loc: []
@@ -40,6 +42,7 @@ const animate = () => {
   // context.fillRect(50,50,100,100)
   // context.drawImage(image, SourceX, SourceY, SourceWidth, SourceHeight, destinationX, destinationY, destinationW, destinationH )
   
+  //obtiene valores 1,2,3... hasta n, siendo n el valor despues del simbolo de module
   let position = Math.floor(gameFrame/staggerFrames) % spriteAnimation[`${animation}`].loc.length;
   let frameX = spriteWidth * position
   let frameY = spriteAnimation[`${animation}`].loc[position].y
